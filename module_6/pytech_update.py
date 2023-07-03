@@ -1,28 +1,20 @@
 import pymongo
-from pymongo import MongoClient
 
-# Connect to the MongoDB server
-client = MongoClient("mongodb+srv://admin:admin@cluster0.g9e2son.mongodb.net/")
+# Connect to the Pytech database
+client = pymongo.MongoClient("mongodb+srv://admin:admin@cluster0.g9e2son.mongodb.net/")
+db = client["Pytech"]
+students = db["students"]
 
-# Access the pytech database
-db = client.pytech
+# Find all documents in the students collection
+results = students.find()
 
-# Access the students collection
-students = db.students
+# Print the documents to the terminal window
+for result in results:
+    print(result)
 
-# Call the find() method and output the documents
-print("Before Update:")
-cursor = students.find({})
-for student in cursor:
-    print(student)
+# Update the last name of the student with student_id 1007 to "Smith"
+update_result = students.update_one({"student_id": 1007}, {"$set": {"last_name": "Smith"}})
 
-# Update the last name of student_id 1007
-students.update_one(
-    {"student_id": 1007},
-    {"$set": {"last_name": "NewLastName"}}
-)
-
-# Find and output the updated document
-print("\nAfter Update:")
-updated_student = students.find_one({"student_id": 1007})
-print(updated_student)
+# Print the updated document to the terminal window
+updated_result = students.find_one({"student_id": 1007})
+print(updated_result)
