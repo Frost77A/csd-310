@@ -1,3 +1,9 @@
+""" 
+    Title: pytech_update.py
+    Author: Amro Taha
+    Date: 25 June 2023
+    Description: Test program for update documents from the pytech collection
+"""
 import pymongo
 
 # Connect to the Pytech database

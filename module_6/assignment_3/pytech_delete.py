@@ -1,3 +1,10 @@
+""" 
+    Title: pytech_delete.py
+    Author: Amro Taha
+    Date: 25 June 2023
+    Description: Test program for delete documents from the pytech collection
+"""
+
 import pymongo
 
 # Connect to the Pytech database
