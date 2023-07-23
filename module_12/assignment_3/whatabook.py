@@ -92,18 +92,10 @@ def add_book_to_wishlist(cursor, user_id, book_id):
     cnx.commit()
     print("Book added to wishlist.")
 
-# Custom input function to validate numeric choices
-def get_numeric_choice(prompt, valid_choices):
-    while True:
-        choice = input(prompt)
-        if choice in valid_choices:
-            return choice
-        print("Invalid input. Please enter a valid numeric choice.")
-
 # Main program loop
 while True:
     show_menu()
-    choice = get_numeric_choice("Enter your choice: ", ["1", "2", "3", "4"])
+    choice = input("Enter your choice: ")
 
     if choice == "1":
         show_books(cursor)
@@ -114,7 +106,7 @@ while True:
         if user_id:
             while True:
                 show_account_menu()
-                account_choice = get_numeric_choice("Enter your choice: ", ["1", "2", "3", "4"])
+                account_choice = input("Enter your choice: ")
 
                 if account_choice == "1":
                     show_wishlist(cursor, user_id)
